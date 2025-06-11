@@ -10,10 +10,10 @@
     --color-orange: #ff5f00;
 
     --whitespace-xs: .5rem;
-    --whitespace-s: 1rem;
+    --whitespace-s: 0.875rem;
     --whitespace-base: 1.5rem;
-    --whitespace-m: 2rem;
-    --whitespace-l: 3rem;
+    --whitespace-m: 2.5rem;
+    --whitespace-l: 3.75rem;
 
     --font-size-s: .75rem;
     --font-size-base: 1rem;
@@ -73,6 +73,51 @@ body {
     font-size: var(--font-size-l);
     line-height: 1.5;
     color: var(--color-black);
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px; 
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.buttons{
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--whitespace-m);
+    align-items: center;
+    margin-bottom: var(--whitespace-l);
+    bottom: 0;
+    width: 100%;
+}
+
+.button{
+    display: inline-block;
+    width: 16rem;
+    padding: var(--whitespace-s) var(--whitespace-m);
+    border: solid 2px var(--color-black);
+    text-align: center;
+    background-color: var(--color-white);
+}
+
+.active{
+    background-color: var(--color-green);
+}
+
+.button:hover{
+    background-color: var(--color-green);
+    cursor: pointer;
 }
 
 
