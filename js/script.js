@@ -37,14 +37,6 @@ $opacity5.addEventListener('input', function () {
 $opacity6.addEventListener('input', function () {
     $g6.style.background = `radial-gradient(circle at center, rgba(var(--color6), ${this.value}) 0, rgba(var(--color6), 0) 50%) no-repeat`;
 });
-// $blur.addEventListener('input', function () {
-//     $gContainer.style.filter = `url('#goo') blur(${this.value}px)`;
-// });
-
-// $matrix.addEventListener('input', function () {
-//     $matrixValue.setAttribute('values',
-//         `${1} 0 0 0 0  0 ${1} 0 0 0  0 0 ${1} 0 0  0 0 0 20 -10`);
-// });
 
 
 
