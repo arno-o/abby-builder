@@ -22,6 +22,7 @@
     --whitespace-base: 1.25rem;
     --whitespace-m: 2.5rem;
     --whitespace-l: 3.75rem;
+    --whitespace-xl: 5grem;
 
     --font-size-s: .75rem;
     --font-size-base: 1rem;
@@ -158,7 +159,7 @@ a {
 
 .build {
     width: 100vw;
-    height: 125vh;
+    /* height: 125vh; */
     background: var(--color-blue);
     display: grid;
     justify-items: center;
@@ -177,6 +178,7 @@ a {
 .intro {
     display: grid;
     grid-template-columns: 35% 65%;
+    overflow-y: hidden;
 }
 
 .intro__info, .save__info, .save__qr {
@@ -440,14 +442,50 @@ a {
 }
 
 .build__controls {
+    padding: var(--whitespace-xl) 0 var(--whitespace-l) 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    column-gap: var(--whitespace-l);
+    row-gap: var(--whitespace-s);
+    width: 60vw;
 }
 
 .slider-container {
     display: flex;
     flex-direction: column;
+    font-family: GT-Walsheim-Medium, sans-serif;
+    font-size: var(--font-size-l);
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 1rem;
+    width: 100%;
+    height: 2rem;
+    background: #BB7CD2;
+    background: linear-gradient(90deg, rgba(187, 124, 210, 1) 0%, rgba(254, 192, 78, 1) 100%);
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    border: 6px solid var(--color-white);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
 }
 
 .slider-container label {
