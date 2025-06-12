@@ -125,6 +125,7 @@ a {
     margin-bottom: var(--whitespace-l);
     bottom: 0;
     width: 100%;
+    z-index: 10;
 }
 
 .button{
@@ -331,10 +332,6 @@ a {
     position: relative;
     top: 0;
     left: 0;
-}
-
-.intro__visual .gradient-bg {
-    z-index: -1;
 }
 
 .gradient-bg svg {
