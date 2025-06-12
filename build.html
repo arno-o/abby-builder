@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <nav>
         <ul class="buttons">
@@ -19,7 +21,55 @@
         <h1 class="visually-hidden">Build</h1>
         <img class="abby-logo" src="assets/svg/abby-identity.svg" alt="Abbby Identity Logo">
         <div class="build__container">
+            <div class="gradient-bg">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9"
+                                result="goo" />
+                            <feBlend in="SourceGraphic" in2="goo" />
+                        </filter>
+                    </defs>
+                </svg>
+                <div class="gradients-container">
+                    <div class="g1"></div>
+                    <div class="g2"></div>
+                    <div class="g3"></div>
+                    <div class="g4"></div>
+                    <div class="g5"></div>
+                    <div class="g6"></div>
+                </div>
+                <div class="controls">
+                    <div class="slider-container">
+                        <label for="opacity1">Color 1</label>
+                        <input type="range" id="opacity1" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+                    <div class="slider-container">
+                        <label for="opacity2">Color 2</label>
+                        <input type="range" id="opacity2" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+                    <div class="slider-container">
+                        <label for="opacity3">Color 3</label>
+                        <input type="range" id="opacity3" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+                    <div class="slider-container">
+                        <label for="opacity4">Color 4</label>
+                        <input type="range" id="opacity4" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+                    <div class="slider-container">
+                        <label for="opacity5">Color 5</label>
+                        <input type="range" id="opacity5" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+                    <div class="slider-container">
+                        <label for="opacity6">Color 6</label>
+                        <input type="range" id="opacity6" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+    <script src="/js/script.js"></script>
 </body>
+
 </html>

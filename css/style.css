@@ -9,6 +9,13 @@
     --color-purple: #bb7cd2;
     --color-orange: #ff5f00;
 
+    --color1: 95, 144, 255;
+    --color2: 255, 191, 80;
+    --color3: 255, 95, 0;
+    --color4: 0, 164, 104;
+    --color5: 187, 124, 210;
+    --color-red: 255, 102, 102;
+
     --whitespace-xxs: .25rem;
     --whitespace-xs: .5rem;
     --whitespace-s: 0.875rem;
@@ -24,6 +31,10 @@
     --font-size-xxl: 3.125rem;
 
     --font-family-sans: Helvetica, Arial, sans-serif;   
+
+    --circle-size: 60%;
+    --circle-size-small: 70%;
+    --blending: hard-light;
 }
 
 @font-face {
@@ -261,6 +272,183 @@ a {
     max-width: 30ch;
 }
 
+/* ---------------------Abby Identity Visual--------------------- */
 
 
+@keyframes moveInCircle {
+    0% {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg) translateX(100px) rotate(-180deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+}
+
+@keyframes moveVertical {
+    0% {
+        transform: translateY(-10%);
+    }
+
+    33% {
+        transform: translateY(10%);
+    }
+
+    66% {
+        transform: translateY(-15%);
+    }
+
+    100% {
+        transform: translateY(-10%);
+    }
+}
+
+@keyframes moveHorizontal {
+    0% {
+        transform: translateX(-10%) translateY(-10%);
+    }
+
+    33% {
+        transform: translateX(10%) translateY(10%);
+    }
+
+    66% {
+        transform: translateX(-15%) translateY(10%);
+    }
+
+    100% {
+        transform: translateX(-10%) translateY(-10%);
+    }
+}
+
+.gradient-bg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.intro__visual .gradient-bg {
+    z-index: -1;
+}
+
+.gradient-bg svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+}
+
+.gradients-container {
+    filter: url(#goo) blur(0px);
+    width: 80%;
+    height: 80%;
+    display: grid;
+    place-items: center;
+}
+
+.g1 {
+    border-radius: 100%;
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color1), 1) 0, rgba(var(--color1), 0) 40%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size-small);
+    height: var(--circle-size-small);
+    top: calc(50% - var(--circle-size-small) / 2);
+    left: calc(50% - var(--circle-size-small) / 2);
+    animation: moveVertical 10s ease infinite;
+    opacity: 0.8;
+}
+
+.g2 {
+    position: absolute;
+    border-radius: 100%;
+    background: radial-gradient(circle at center, rgba(var(--color2), 1) 0, rgba(var(--color2), 0) 40%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size-small);
+    height: var(--circle-size-small);
+    top: calc(50% - var(--circle-size-small) / 2);
+    left: calc(50% - var(--circle-size-small) / 2);
+    animation: moveInCircle 15s linear infinite;
+    opacity: 0.8;
+}
+
+.g3 {
+    position: absolute;
+    border-radius: 100%;
+    background: radial-gradient(circle at center, rgba(var(--color3), 1) 0, rgba(var(--color3), 0) 40%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    animation: moveHorizontal 20s ease infinite;
+    opacity: 0.8;
+}
+
+.g4 {
+    position: absolute;
+    border-radius: 100%;
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.5) 0, rgba(var(--color4), 0) 40%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size-small);
+    height: var(--circle-size-small);
+    top: calc(50% - var(--circle-size-small) / 2);
+    left: calc(50% - var(--circle-size-small) / 2);
+    animation: moveVertical 10s ease infinite;
+    opacity: 0.8;
+}
+
+.g5 {
+    position: absolute;
+    border-radius: 100%;
+    background: radial-gradient(circle at center, rgba(var(--color5), 0.1) 0, rgba(var(--color5), 0) 40%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size-small);
+    height: var(--circle-size-small);
+    top: calc(50% - var(--circle-size-small) / 2);
+    left: calc(50% - var(--circle-size-small) / 2);
+    animation: moveInCircle 15s linear infinite;
+    opacity: 0.8;
+}
+
+.g6 {
+    position: absolute;
+    border-radius: 100%;
+    background: radial-gradient(circle at center, rgba(var(--color6), 0.1) 0, rgba(var(--color6), 0) 40%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size-small);
+    height: var(--circle-size-small);
+    top: calc(50% - var(--circle-size-small) / 2);
+    left: calc(50% - var(--circle-size-small) / 2);
+    animation: moveHorizontal 20s linear infinite;
+    opacity: 0.8;
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    z-index: 100;
+}
+
+.slider-container {
+    /* display: flex;
+    align-items: center; */
+    gap: 10px;
+}
+
+.slider-container label {
+    min-width: 120px;
+}
 
