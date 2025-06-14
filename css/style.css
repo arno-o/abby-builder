@@ -444,7 +444,8 @@ a {
 }
 
 .build__controls {
-    margin: var(--whitespace-xl);
+    margin-top: var(--whitespace-xl);
+    margin-bottom: var(--whitespace-l);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: var(--whitespace-l);
@@ -509,8 +510,8 @@ a {
 }
 
 .build__slider {
+    opacity: 0;
     padding: var(--whitespace-l);
-    transition: opacity 0.3s ease;
     position:fixed;
     max-width: 40ch;
     display: flex;
@@ -521,5 +522,7 @@ a {
 .slider.active {
     box-shadow: 0 0 0 2px #000;
 }
+
+
 
 

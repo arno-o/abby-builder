@@ -37,7 +37,9 @@
                     <div class="slider__visual">
                         <input class="slider slider__visual-input" type="range" min="0" max="1" step="0.01" disabled>
                     </div>
-                    <p class="build__value"></p>
+                    <div class="value-container">
+                        <p class="build__value">QUIET</p>             
+                    </div>
                 </div>
                 <div class="gradients-container">
                     <div class="g1"></div>
@@ -55,7 +57,7 @@
                 <input class="slider slider--1" type="range" id="opacity1" min="0" max="1" step="0.01" value="0.5">
             </div>
             <div class="slider-container">
-                <label for="opacity2">Planning Style</label>
+                <label for="opacity2">Cleanliness</label>
                 <input class="slider slider--2" type="range" id="opacity2" min="0" max="1" step="0.01" value="0.5">
             </div>
             <div class="slider-container">
@@ -76,7 +78,8 @@
             </div>
         </div>
     </main>
-    <script src="/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="/js/sliders.js"></script>
 </body>
 
 </html>
