@@ -117,6 +117,17 @@ a {
     color: var(--color-black);
 }
 
+button {
+    transition: all 0.5s ease;
+    z-index: 10;
+    font-family: GT-walsheim-regular, sans-serif;
+    font-size: var(--font-size-l);
+    width: max-content;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--whitespace-s);
+}
+
 .buttons{
     display: flex;
     position: absolute;
@@ -124,7 +135,7 @@ a {
     justify-content: center;
     gap: var(--whitespace-m);
     align-items: center;
-    margin-bottom: var(--whitespace-l);
+    margin-block-end: var(--whitespace-l);
     bottom: 0;
     width: 100%;
     z-index: 10;
@@ -155,6 +166,50 @@ a {
     right: 0;
     padding: var(--whitespace-base);
 }
+
+/* ---------------------Intro Video--------------------- */
+
+.video__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-black);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.skip-intro {
+    position: absolute;
+    top: var(--whitespace-l);
+    right: var(--whitespace-l);
+}
+
+.skip-intro, .video__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--whitespace-s);
+}
+
+.skip-intro:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* .video-intro.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+} */
 
 /* ---------------------Build Page--------------------- */
 
@@ -214,11 +269,16 @@ a {
     width: max-content;
     padding: var(--whitespace-xxs) var(--whitespace-base);
     border-radius: var(--whitespace-m);
-    margin-bottom: var(--whitespace-base);
+    margin-block-end: var(--whitespace-base);
 }
 
 .intro__title, .intro__text {
-    margin-bottom: 1rem;
+    margin-block-end: 1rem;
+}
+
+.video__button {
+    background-color: transparent;
+    margin-top: var(--whitespace-m);
 }
 
 /* ---------------------Save Page--------------------- */
@@ -239,11 +299,11 @@ a {
 }
 
 .save__subtitle {
-    margin-bottom: var(--whitespace-xxs);
+    margin-block-end: var(--whitespace-xxs);
 }
 
 .save__text{
-    margin-bottom: var(--whitespace-base);
+    margin-block-end: var(--whitespace-base);
 }
 
 .save__content .tag {
@@ -347,7 +407,7 @@ a {
 }
 
 .gradients-container {
-    filter: url(#goo) blur(1px);
+    filter: url(#goo) blur(0px);
     display: grid;
     place-items: center;
 }
@@ -362,8 +422,6 @@ a {
     height: 95%;
     margin: 0 auto;
 }
-
-
 
 .g1 {
     border-radius: 100%;
@@ -443,9 +501,11 @@ a {
     opacity: 1;
 }
 
+/* ---------------------Sliders--------------------- */
+
 .build__controls {
     margin-top: var(--whitespace-xl);
-    margin-bottom: var(--whitespace-l);
+    margin-block-end: var(--whitespace-l);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: var(--whitespace-l);

@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:video" content="assets/video/intro.mp4">
+    <meta property="og:video:type" content="video/mp4">
     <title>Save</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <div class="video__container">
+        <video class="intro-video" autoplay muted>
+            <source src="assets/video/intro.mp4" type="video/mp4">
+            Your browser doesn't support HTML5 video.
+        </video>
+        <button class="skip-intro button">Skip Intro<img src="assets/svg/abby-arrow.svg" alt="arrow icon" width="28" ></button>
+    </div>
     <nav>
         <ul class="buttons">
             <li class="buttons-item"><a class="button active" href="index.html">Intro</a></li>
@@ -41,6 +50,7 @@
                     adding to your Abby
                     Identity.
                 </p>
+                <button class="video__button button"><img src="assets/svg/play.svg" alt="arrow icon" width="28">Play Intro</button>
             </div>
         </section>
         <section class="intro__visual">
@@ -66,6 +76,8 @@
             </div>
         </section>
     </main>
+    <script src="/js/intro.js"></script>
 </body>
+
 
 </html>

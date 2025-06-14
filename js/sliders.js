@@ -51,7 +51,7 @@ const sliderData = [
 ];
 
 
-// Initialize
+
 $buildSlider.style.opacity = '0';
 
 // Event handlers
