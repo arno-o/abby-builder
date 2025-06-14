@@ -22,7 +22,7 @@
     --whitespace-base: 1.25rem;
     --whitespace-m: 2.5rem;
     --whitespace-l: 3.75rem;
-    --whitespace-xl: 5grem;
+    --whitespace-xl: 6rem;
 
     --font-size-s: .75rem;
     --font-size-base: 1rem;
@@ -88,6 +88,7 @@ body {
     font-size: var(--font-size-l);
     line-height: 1.5;
     color: var(--color-black);
+    overflow-x: hidden;
 }
 
 .visually-hidden {
@@ -138,7 +139,7 @@ a {
     background-color: var(--color-white);
 }
 
-.active{
+.button.active{
     background-color: var(--color-green);
     font-family: GT-walsheim-bold, sans-serif;
 }
@@ -234,6 +235,7 @@ a {
 .save__content {
     max-width: 50ch;
     justify-content: center;
+    margin-left: -2rem;
 }
 
 .save__subtitle {
@@ -345,7 +347,7 @@ a {
 }
 
 .gradients-container {
-    filter: url(#goo) blur(0px);
+    filter: url(#goo) blur(1px);
     display: grid;
     place-items: center;
 }
@@ -373,7 +375,7 @@ a {
     top: calc(50% - var(--circle-size-small) / 2);
     left: calc(50% - var(--circle-size-small) / 2);
     animation: moveVertical 10s ease infinite;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .g2 {
@@ -386,7 +388,7 @@ a {
     top: calc(50% - var(--circle-size-small) / 2);
     left: calc(50% - var(--circle-size-small) / 2);
     animation: moveInCircle 15s linear infinite;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .g3 {
@@ -399,7 +401,7 @@ a {
     top: calc(50% - var(--circle-size) / 2);
     left: calc(50% - var(--circle-size) / 2);
     animation: moveHorizontal 20s ease infinite;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .g4 {
@@ -412,7 +414,7 @@ a {
     top: calc(50% - var(--circle-size-small) / 2);
     left: calc(50% - var(--circle-size-small) / 2);
     animation: moveVertical 10s ease infinite;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .g5 {
@@ -425,7 +427,7 @@ a {
     top: calc(50% - var(--circle-size-small) / 2);
     left: calc(50% - var(--circle-size-small) / 2);
     animation: moveInCircle 15s linear infinite;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .g6 {
@@ -438,11 +440,11 @@ a {
     top: calc(50% - var(--circle-size-small) / 2);
     left: calc(50% - var(--circle-size-small) / 2);
     animation: moveHorizontal 20s linear infinite;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .build__controls {
-    padding: var(--whitespace-xl) 0 var(--whitespace-l) 0;
+    margin: var(--whitespace-xl);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: var(--whitespace-l);
@@ -466,8 +468,7 @@ a {
     width: 100%;
     height: 2rem;
     background: #BB7CD2;
-    background: linear-gradient(90deg, rgba(187, 124, 210, 1) 0%, rgba(254, 192, 78, 1) 100%);
-    outline: none;
+    background: linear-gradient(90deg, var(--color-purple) 0%, var(--color-orange) 50%, var(--color-yellow) 100%)
 }
 
 .slider::-webkit-slider-thumb {
@@ -484,12 +485,41 @@ a {
 .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: #04AA6D;
     cursor: pointer;
 }
 
 .slider-container label {
 
+}
+
+.slider__title {
+    font-family: GT-Walsheim-Medium, sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-purple);
+    line-height: 1.2;
+}
+
+.build__value {
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+.slider__visual-input::-webkit-slider-thumb {
+    border: 6px solid rgb(228, 228, 228);
+}
+
+.build__slider {
+    padding: var(--whitespace-l);
+    transition: opacity 0.3s ease;
+    position:fixed;
+    max-width: 40ch;
+    display: flex;
+    flex-direction: column;
+    gap: var(--whitespace-base);
+}
+
+.slider.active {
+    box-shadow: 0 0 0 2px #000;
 }
 
 
