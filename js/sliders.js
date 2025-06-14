@@ -19,8 +19,9 @@ const $valueContainer = document.querySelector('.value-container');
 const $valueDisplay = document.querySelector('.build__value');
 const $buildSlider = document.querySelector('.build__slider');
 const $sliders = document.querySelectorAll('.build__controls .slider');
-let fadeTimeout = null;
 
+let fadeTimeout = null;
+let activeSliderIndex = null;
 
 // Slider content
 const sliderData = [
@@ -51,67 +52,95 @@ const sliderData = [
 ];
 
 
-
+// Top Slider Visual
 $buildSlider.style.opacity = '0';
 
-// Event handlers
-const handleSliderInput = (slider, index) => {
-    $buildSlider.style.opacity = '1';
-    $visualSlider.value = slider.value;
-    $title.textContent = sliderData[index].title;
-
+const updateSliderContent = (index, slider) => {
+    const value = slider.value;
     const valuesArray = sliderData[index].values;
     const step = 1 / valuesArray.length;
-    const valueIndex = Math.min(
-        valuesArray.length - 1,
-        Math.floor(slider.value / step)
-    );
+    const valueIndex = Math.min(valuesArray.length - 1, Math.floor(value / step));
     const newValue = valuesArray[valueIndex];
 
-    // Store previous valueIndex instead of slider.value
+    $title.textContent = sliderData[index].title;
+    $visualSlider.value = value;
+    $valueDisplay.textContent = newValue;
+
+    return { newValue, valueIndex };
+};
+
+const animateSliderSwap = (index, slider) => {
+    gsap.to($buildSlider, {
+        x: 250,
+        opacity: 0,
+        duration: 0.3,
+        onComplete: () => {
+            const { newValue } = updateSliderContent(index, slider);
+            gsap.set($buildSlider, { x: -250, opacity: 0 });
+            gsap.to($buildSlider, { x: 0, opacity: 1, duration: 0.3 });
+        }
+    });
+};
+
+const animateValueChange = (slider, valueIndex, newValue) => {
     const lastValueIndex = +slider.dataset.lastValueIndex || 0;
+    if (valueIndex === lastValueIndex) return;
 
-    if (valueIndex !== lastValueIndex) {
-        slider.dataset.lastValueIndex = valueIndex;
+    slider.dataset.lastValueIndex = valueIndex;
+    const direction = valueIndex > lastValueIndex ? 1 : -1;
 
-        const direction = valueIndex > lastValueIndex ? 1 : -1;
+    gsap.killTweensOf($valueDisplay);
+    gsap.to($valueDisplay, {
+        x: -100 * direction,
+        opacity: 0,
+        duration: 0.2,
+        onComplete: () => {
+            $valueDisplay.textContent = newValue;
+            gsap.fromTo($valueDisplay, { x: 100 * direction, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2 });
+        },
+    });
+};
 
-        gsap.killTweensOf($valueDisplay);
-
-        gsap.to($valueDisplay, {
-            x: -100 * direction,
-            opacity: 0,
-            duration: 0.2,
-            onComplete: () => {
-                $valueDisplay.textContent = newValue;
-                gsap.fromTo(
-                    $valueDisplay,
-                    { x: 100 * direction, opacity: 0 },
-                    { x: 0, opacity: 1, duration: 0.2 }
-                );
-            },
-        });
-    }
-
-    $sliders.forEach(s => s.classList.remove('active'));
-    slider.classList.add('active');
-
-
+const animateFadeOut = () => {
     clearTimeout(fadeTimeout);
     fadeTimeout = setTimeout(() => {
         gsap.to($buildSlider, {
-            x: -800,
+            x: -300,
             opacity: 0,
             duration: 0.5,
             onComplete: () => {
                 gsap.set($buildSlider, { x: 0, opacity: 0 });
             }
         });
-        // $buildSlider.style.opacity = '0';
         $sliders.forEach(s => s.classList.remove('active'));
+        activeSliderIndex = null;
     }, 3000);
 };
 
+const handleSliderInput = (slider, index) => {
+    const value = slider.value;
+    const valuesArray = sliderData[index].values;
+    const step = 1 / valuesArray.length;
+    const valueIndex = Math.min(valuesArray.length - 1, Math.floor(value / step));
+    const newValue = valuesArray[valueIndex];
+
+    if (index !== activeSliderIndex) {
+        activeSliderIndex = index;
+        animateSliderSwap(index, slider);
+    } else {
+        $visualSlider.value = value;
+    }
+
+    animateValueChange(slider, valueIndex, newValue);
+
+    $sliders.forEach(s => s.classList.remove('active'));
+    slider.classList.add('active');
+
+    animateFadeOut();
+};
+
+
+// Save for QR code
 const saveSliderValuesToStorage = () => {
     const values = {
         g1: parseFloat(document.getElementById('opacity1').value),
@@ -124,6 +153,7 @@ const saveSliderValuesToStorage = () => {
     localStorage.setItem('identityValues', JSON.stringify(values));
 };
 
+// Update Blob
 const updateGradient = (slider, index) => {
     const $gradients = [$g1, $g2, $g3, $g4, $g5, $g6];
     $gradients[index].style.background =

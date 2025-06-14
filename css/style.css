@@ -1,6 +1,4 @@
 :root {
-
-    /* declare CSS variables here afterwards */
     --color-black: rgba(0, 0, 0);
     --color-white: white;
     --color-blue: #5f90ff;
@@ -201,30 +199,18 @@ button {
     gap: var(--whitespace-s);
 }
 
-.skip-intro:hover {
-    background: rgba(255, 255, 255, 0.4);
-}
-
-/* .video-intro.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-} */
-
 /* ---------------------Build Page--------------------- */
 
 .build {
     width: 100vw;
-    /* height: 125vh; */
     background: var(--color-blue);
     display: grid;
     justify-items: center;
-
 }
 
 .build__container {
     background-color: var(--color-white);
-    margin-top: var(--whitespace-base);
+    margin-block-start: var(--whitespace-base);
     width: 98%;
     height: 61rem;
 }
@@ -278,7 +264,7 @@ button {
 
 .video__button {
     background-color: transparent;
-    margin-top: var(--whitespace-m);
+    margin-block-start: var(--whitespace-m);
 }
 
 /* ---------------------Save Page--------------------- */
@@ -295,7 +281,7 @@ button {
 .save__content {
     max-width: 50ch;
     justify-content: center;
-    margin-left: -2rem;
+    margin-inline-start: -2rem;
 }
 
 .save__subtitle {
@@ -307,7 +293,7 @@ button {
 }
 
 .save__content .tag {
-    margin-bottom: var(--whitespace-m);
+    margin-block-end: var(--whitespace-m);
 }
 
 .save__qr {
@@ -323,14 +309,14 @@ button {
 }
 
 .qr__svg{
-    margin-bottom: 4rem;
+    margin-block-end: 4rem;
 }
 
 .qr__title {
     font-size: 3rem;
     font-family: gt-walsheim-medium, sans-serif;
     line-height: 1.3;
-    margin-bottom: 2rem;
+    margin-block-end: 2rem;
 }
 
 .qr__text {
@@ -504,7 +490,7 @@ button {
 /* ---------------------Sliders--------------------- */
 
 .build__controls {
-    margin-top: var(--whitespace-xl);
+    margin-block-start: var(--whitespace-xl);
     margin-block-end: var(--whitespace-l);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
