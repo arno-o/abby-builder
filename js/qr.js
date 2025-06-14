@@ -1,14 +1,13 @@
 const $qrCode = document.getElementById('identityQR');
 
+const storedValues = JSON.parse(localStorage.getItem('identityValues'));
+
 const identityData = {
-        id: Date.now().toString(),
-        g1: 1,
-        g2: 0.8,
-        g3: 0.5,
-        g4: 0,
-        g5: 0.3,
-        g6: 0.4,
+    id: Date.now().toString(), 
+    ...storedValues             
 };
+
+console.log(identityData);
 
 console.log('hello');
 

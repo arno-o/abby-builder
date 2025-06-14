@@ -50,6 +50,7 @@ const sliderData = [
     }
 ];
 
+
 // Initialize
 $buildSlider.style.opacity = '0';
 
@@ -111,13 +112,17 @@ const handleSliderInput = (slider, index) => {
     }, 3000);
 };
 
-
-// const handleSliderLeave = (slider) => {
-//     setTimeout(() => {
-//         $buildSlider.style.opacity = '0';
-//         slider.classList.remove('active');
-//     }, 1000);
-// };
+const saveSliderValuesToStorage = () => {
+    const values = {
+        g1: parseFloat(document.getElementById('opacity1').value),
+        g2: parseFloat(document.getElementById('opacity2').value),
+        g3: parseFloat(document.getElementById('opacity3').value),
+        g4: parseFloat(document.getElementById('opacity4').value),
+        g5: parseFloat(document.getElementById('opacity5').value),
+        g6: parseFloat(document.getElementById('opacity6').value),
+    };
+    localStorage.setItem('identityValues', JSON.stringify(values));
+};
 
 const updateGradient = (slider, index) => {
     const $gradients = [$g1, $g2, $g3, $g4, $g5, $g6];
@@ -129,8 +134,8 @@ const updateGradient = (slider, index) => {
 const init = () => {
     $sliders.forEach((slider, index) => {
         slider.addEventListener('input', () => handleSliderInput(slider, index));
-        // slider.addEventListener('mouseleave', () => handleSliderLeave(slider));
         slider.addEventListener('input', () => updateGradient(slider, index));
+        slider.addEventListener('input', saveSliderValuesToStorage);
     });
 };
 
